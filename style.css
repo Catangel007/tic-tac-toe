@@ -1,25 +1,28 @@
 body{
-    background-color: #32527b;
+    background-color: rgb(14,14,14);
     display: flex;
     align-items: center;
     justify-content: center;
      margin: 0;
      height: 100vh;
     
+    
 }
 
 .frame{
-    height: 40%;
-    width: 40%;
-   background-color:hsl(14, 54%, 50%);
-    border: 4px solid hsl(180, 0%, 65%); 
+    height: 35%;
+    width: 30%;
+   background-color: hsl(214, 42%, 25%);
+    border: 4px solid hsl(180, 0%, 60%); 
    padding: 50px;
+   padding-right: 60px;
+   padding-bottom: 65px;
    border-radius: 4px;
-   box-shadow: -3px -3px 15px 5px wheat;
+   box-shadow: -3px -3px 15px 5px rgb(133, 131, 128);
 }
 
 .board{
-    border: 10px solid black;
+    border: 10px solid hsl(11, 64%, 27%);
     background-color: snow;
     height: 100%;
     width: 100% ;
