@@ -60,13 +60,15 @@ const displayController= (function(){
                square6 && square4 && square3 === "o"
 
          ){ alert("PlayerTwo has won the game");
+
+            return winningPlayer;
    }
 
- return{ allSquare}
+ return{ allSquare, winningPlayer}
 }
 })()
 
-console.log(allSquare);
+console.log(allSquare,);
 
 playerOne={
     nam
