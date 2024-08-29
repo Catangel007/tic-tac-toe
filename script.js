@@ -3,70 +3,65 @@
 
 const gameBoard = (function (){
     
-    const columns = 3;
-    const rows = 3;
-    const board = [];
-
-// creation of a 2d array
-    for (let i = 0; i < rows; i++){
-        board[i]=[];
-        for(let j= 0; j < columns; i++){
-            board[i].push(cell());
-        }
-    }
-
-    const getBoard = board;
-
-    const gamePieces=["X","O"]
-   
-    const {playerOne, playerTwo}= gamePieces;
     
-
-  return{getBoard, playerOne, playerTwo}
+      const row1 = [null,null,null];
+      const row2 = [null,null,null];
+      const row3 = [null,null,null];
+     
+  
 })()
 ;
 
+const gamePieces = ["X", "O"];
 
-const displayController= (function(){
+const {playerOne, playerTwo}= gamePieces;
+function Player (name, marker){
+    this.name = name;
+    this.marker= marker;
+    this.turn= false;
+    this.score = 0;
+}
 
- const allSquare = document .querySelectorAll(".cell");
- allSquare.addeventlistener("click", ()=>{
-    allSquare.textContent = playerOne ? playerTwo:playerOne;
- })
+playerOne = new Player( prompt.value, "X")
+console.log("playerOne has the X marker");
+
+playerTwo = new Player(prompt.value, "0")
+console.log("playerTwo has the O marker")
+
+// const displayController= (function(){
+
+//  const allSquare = document .querySelectorAll(".cell");
+//  allSquare.addeventlistener("click", ()=>{
+//     allSquare.textContent = playerOne ? playerTwo:playerOne;
+//  })
  
- const square1 = document.querySelector(".cell1");
- const square2 = document.querySelector(".cell2");
- const square3 = document.querySelector(".cell3");
- const square4 = document.querySelector(".cell4");
- const square5 = document.querySelector(".cell5");
- const square6 = document.querySelector(".cell6");
- const square7 = document.querySelector(".cell7");
- const square8 = document.querySelector(".cell8");
- const square9 = document.querySelector(".cell9");
+ function switchTurn(){
+
+ }
   
 
    function winningPlayer(){
-  if(square1&& square2&& square3 === "x" ||
-    square3 && square4 && square5 === "x" ||
-    square6 && square7 && square9 === "x" ||
-    square1 && square4 && square9 === "x" ||
-    square6 && square4 && square3 === "x"
+  if(row1[0]&& row1[1] && row1[2] === "X" ||
+    row2[0]&& row2[1] && row2[2] === "X" ||
+    row3[0]&& row3[1] && row3[2] === "X" ||
+    row1[0]&& row2[1] && row3[2] === "X" ||
+    row3[0]&& row2[1] && row1[2] === "X"
   ){
-    alert ("PlayerOne has won the game")
-  }else if (square1&& square2&& square3 === "o" ||
-               square3 && square4 && square5 === "o" ||
-               square6 && square7 && square9 === "o" ||
-               square1 && square4 && square9 === "o" ||
-               square6 && square4 && square3 === "o"
+    alert (`${playerOne.name} has won the game`);
 
-         ){ alert("PlayerTwo has won the game");
+  }else if (row1[0]&& row1[1] && row1[2] === "O" ||
+    row2[0]&& row2[1] && row2[2] === "O" ||
+    row3[0]&& row3[1] && row3[2] === "O" ||
+    row1[0]&& row2[1] && row3[2] === "O" ||
+    row3[0]&& row2[1] && row1[2] === "O"
+
+         ){ alert(`${playerTwo.name} has won the game`);
 
             return winningPlayer;
    }
 
  return{ allSquare, winningPlayer}
-}
-})()
+}winningPlayer()
 
 console.log(allSquare,);
 
