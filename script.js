@@ -1,20 +1,24 @@
 
+console.log("tic-tac-toe");
 
+ const gameBoard = (function (){
+    
+        const row1 = ()=> [null,null,null];
+        const row2 = ()=> [null,null,null];
+        const row3 = ()=> [null,null,null];
 
-const gameBoard = (function (){
-    
-    
-      const row1 = [null,null,null];
-      const row2 = [null,null,null];
-      const row3 = [null,null,null];
+        return {row1, row2, row3}; 
      
-  
-})()
-;
+ })();
 
-const gamePieces = ["X", "O"];
+gameBoard.row1();
+gameBoard.row2();
+gameBoard.row3();
 
-const {playerOne, playerTwo}= gamePieces;
+const getPlayer = (function(){
+
+
+
 function Player (name, marker){
     this.name = name;
     this.marker= marker;
@@ -22,11 +26,17 @@ function Player (name, marker){
     this.score = 0;
 }
 
-playerOne = new Player( prompt.value, "X")
+const playerOne = new Player( "howard", "X")
 console.log("playerOne has the X marker");
 
-playerTwo = new Player(prompt.value, "0")
+const playerTwo = new Player("vera", "O")
 console.log("playerTwo has the O marker")
+
+    return{ playerOne, playerTwo, Player}
+})();
+
+getPlayer.playerOne;
+getPlayer.playerTwo;
 
 // const displayController= (function(){
 
@@ -34,9 +44,12 @@ console.log("playerTwo has the O marker")
 //  allSquare.addeventlistener("click", ()=>{
 //     allSquare.textContent = playerOne ? playerTwo:playerOne;
 //  })
+
  
  function switchTurn(){
+ playerOne.turn === true ? console.log( `it is ${playerTwo.name}'s turn`): console.log( `it is ${playerOne.name}'s turn`);
 
+ 
  }
   
 
@@ -47,24 +60,50 @@ console.log("playerTwo has the O marker")
     row1[0]&& row2[1] && row3[2] === "X" ||
     row3[0]&& row2[1] && row1[2] === "X"
   ){
-    alert (`${playerOne.name} has won the game`);
+    console.log(`${playerOne.name} has won the game`)
+    playerOne.score += 1;
 
   }else if (row1[0]&& row1[1] && row1[2] === "O" ||
-    row2[0]&& row2[1] && row2[2] === "O" ||
-    row3[0]&& row3[1] && row3[2] === "O" ||
-    row1[0]&& row2[1] && row3[2] === "O" ||
-    row3[0]&& row2[1] && row1[2] === "O"
+            row2[0]&& row2[1] && row2[2] === "O" ||
+            row3[0]&& row3[1] && row3[2] === "O" ||
+            row1[0]&& row2[1] && row3[2] === "O" ||
+            row3[0]&& row2[1] && row1[2] === "O"
 
-         ){ alert(`${playerTwo.name} has won the game`);
+         ){ console.log(`${playerTwo.name} has won the game`);
+         playerTwo.score += 1;
 
-            return winningPlayer;
+           
    }
 
- return{ allSquare, winningPlayer}
-}winningPlayer()
+ return{ winningPlayer}
+}
 
-console.log(allSquare,);
 
-playerOne={
-    nam
+
+function playGame(x,y){
+    switchTurn();
+   
+  let token = Player.marker;
+ let instance = row1|| row2|| row3;
+instance .push(token);
+
+playerOne.turn=true;
+    console.log(`player has played ${x} in ${y}`)
+    console.log(`${y = token}`)
+}
+
+
+
+function gameControl(){
+ winningPlayer()
+
+ if(Player.score ===1){
+    row1.reset();
+    row2.reset();
+    row3.reset();
+
+    playGame()
+ }
+
+  console.log ( Player.name )
 }
