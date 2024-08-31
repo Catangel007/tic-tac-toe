@@ -14,30 +14,28 @@ console.log("tic-tac-toe");
         getBoard: function (rows, columns,board){
              
           for (let i = 0; i < rows; i++){
-              board[i] = [];
+              board[i] = []; 
               for(let j = 0; j < columns; j++){
-                  [].push(j)
+                 board[i].push(cell())
               }
           }
-
+          function cell (){
+             let value = "";
+            
+             return value;
+          }
+          
         }
 
+       
        }
-        
-     
+       return { gameBoard}; 
+    
  })();
- gameBoard.row1();
-    gameBoard.row2();
-    gameBoard.row3();
+ 
 
 
-
-
-
-
-
-
-const getPlayer = (function(){
+const Player = (function(){
 
 function Player (name, marker){
     this.name = name;
@@ -54,27 +52,78 @@ console.log("playerTwo has the O marker")
 
     return{ playerOne, playerTwo, Player}
 })();
-   getPlayer.playerOne;
-    getPlayer.playerTwo;
-    getPlayer.Player;
+   
+
+
+const gameLogic = (function(){
+    
+ let gameActive = true;
+
+  gameBoard.getBoard();
+  Player.playerOne;
+  Player.playerTwo;
+
+  const currentPlayer = () => {
+    
+    if(playerOne.turn === true){
+       playerTwo.turn = false;
+       value= playerOne.marker;
+       rows[columns]= value;
+
+    } else {
+      playerOne.turn = false;
+      value = playerTwo.marker;
+       rows[columns]= value;
+    };
+  }
+
+  function checkWin (){
+      let winner = false;
+
+      function isMatchedX (){
+        let letter = rows[columns];
+        if (letter === "X"){
+          winner = true;
+
+        } else if ( letter === "O"){
+          winner = true;
+        }
+        else {
+          winner = false;
+        }
+
+        
+      }
+      rows[0].every(isMatchedX)
+  }
+
+   function checkDraw(){};
+
+
+   function gameOver(){};
 
 
 
-// const displayController= (function(){
 
-//  const allSquare = document .querySelectorAll(".cell");
-//  allSquare.addeventlistener("click", ()=>{
-//     allSquare.textContent = playerOne ? playerTwo:playerOne;
-//  })
 
+
+
+
+   return {gameActive, currentPlayer, checkWin, checkDraw, gameOver};
+})()
+
+ // DOM Logic
+
+ // display game array
+
+ // add markers to DOM
+
+ // Prevents picked DOM
+
+ // start button
+
+ // modal for prompt player name
  
- function switchTurn(a, db){
- playerOne.turn === true ? console.log( `it is ${playerTwo.name}'s turn`): console.log( `it is ${playerOne.name}'s turn`);
-
- 
- }
-  
-
    function winningPlayer(){
   if(row1[0]&& row1[1] && row1[2] === "X" ||
      row2[0]&& row2[1] && row2[2] === "X" ||
