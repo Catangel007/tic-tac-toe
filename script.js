@@ -1,23 +1,43 @@
 
 console.log("tic-tac-toe");
 
+
+
  const gameBoard = (function (){
     
-        const row1 = ()=> [null,null,null];
-        const row2 = ()=> [null,null,null];
-        const row3 = ()=> [null,null,null];
+       const gameBoard = {
+           
+         rows: 3,
+        columns: 3,
+        board: [],
 
-        return {row1, row2, row3}; 
+        getBoard: function (rows, columns,board){
+             
+          for (let i = 0; i < rows; i++){
+              board[i] = [];
+              for(let j = 0; j < columns; j++){
+                  [].push(j)
+              }
+          }
+
+        }
+
+       }
+        
      
  })();
+ gameBoard.row1();
+    gameBoard.row2();
+    gameBoard.row3();
 
-gameBoard.row1();
-gameBoard.row2();
-gameBoard.row3();
+
+
+
+
+
+
 
 const getPlayer = (function(){
-
-
 
 function Player (name, marker){
     this.name = name;
@@ -34,9 +54,11 @@ console.log("playerTwo has the O marker")
 
     return{ playerOne, playerTwo, Player}
 })();
+   getPlayer.playerOne;
+    getPlayer.playerTwo;
+    getPlayer.Player;
 
-getPlayer.playerOne;
-getPlayer.playerTwo;
+
 
 // const displayController= (function(){
 
@@ -46,7 +68,7 @@ getPlayer.playerTwo;
 //  })
 
  
- function switchTurn(){
+ function switchTurn(a, db){
  playerOne.turn === true ? console.log( `it is ${playerTwo.name}'s turn`): console.log( `it is ${playerOne.name}'s turn`);
 
  
@@ -55,10 +77,10 @@ getPlayer.playerTwo;
 
    function winningPlayer(){
   if(row1[0]&& row1[1] && row1[2] === "X" ||
-    row2[0]&& row2[1] && row2[2] === "X" ||
-    row3[0]&& row3[1] && row3[2] === "X" ||
-    row1[0]&& row2[1] && row3[2] === "X" ||
-    row3[0]&& row2[1] && row1[2] === "X"
+     row2[0]&& row2[1] && row2[2] === "X" ||
+     row3[0]&& row3[1] && row3[2] === "X" ||
+     row1[0]&& row2[1] && row3[2] === "X" ||
+     row3[0]&& row2[1] && row1[2] === "X"
   ){
     console.log(`${playerOne.name} has won the game`)
     playerOne.score += 1;
@@ -80,17 +102,24 @@ getPlayer.playerTwo;
 
 
 
-function playGame(x,y){
-    switchTurn();
+function playGame(){
    
-  let token = Player.marker;
+    
+    switchTurn(playerOne,playerTwo);
+   
+let token = Player.marker;
  let instance = row1|| row2|| row3;
-instance .push(token);
+
+  return function play (newState){
+    newState = instance.push(token)
+    return newState;
+  }
+instance.push(token);
 
 playerOne.turn=true;
     console.log(`player has played ${x} in ${y}`)
     console.log(`${y = token}`)
-}
+}playGame()
 
 
 
@@ -98,12 +127,12 @@ function gameControl(){
  winningPlayer()
 
  if(Player.score ===1){
-    row1.reset();
-    row2.reset();
-    row3.reset();
+    row1().reset();
+    row2().reset();
+    row3().reset();
 
     playGame()
  }
 
   console.log ( Player.name )
-}
+}gameControl();
