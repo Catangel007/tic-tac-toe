@@ -138,7 +138,21 @@ const gameLogic = (function(){
 
  // DOM Logic
  const tabs = document. querySelectorAll(".cell")
+  const DisplayGame = {
+       
+    displayX : function(){
 
+      tabs.addEventListener("click", ()=>{
+        gameLogic.currentPlayer;
+        gameLogic.gameActive;
+        gameLogic.checkWin;
+        gameLogic.checkDraw;
+        gameLogic.gameOver;
+      })
+    }
+
+    
+  }
  // display game array
 
  // add markers to DOM
