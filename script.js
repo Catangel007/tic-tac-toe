@@ -1,6 +1,5 @@
 
-console.log("tic-tac-toe");
-
+console.log("tic-tac-toc");
 
 
  const gameBoard = (function (){
@@ -11,7 +10,7 @@ console.log("tic-tac-toe");
         columns: 3,
         board: [],
 
-        getBoard: function (rows, columns,board){
+        getBoard (){
              
           for (let i = 0; i < rows; i++){
               board[i] = []; 
@@ -24,19 +23,23 @@ console.log("tic-tac-toe");
             
              return value;
           }
-          
-        }
+           
+        },
 
-       
-       }
-       return { gameBoard}; 
+        
+       };
+     
     
  })();
  
 
 
-const Player = (function(){
 
+
+
+
+
+const Player = (function(){
 function Player (name, marker){
     this.name = name;
     this.marker= marker;
@@ -55,13 +58,17 @@ console.log("playerTwo has the O marker")
    
 
 
-const gameLogic = (function(){
+
+
+
+
+const gameLogic = (function(playerOne, playerTwo, gameBoard){
     
  let gameActive = true;
 
-  gameBoard.getBoard();
-  Player.playerOne;
-  Player.playerTwo;
+  gameBoard.gameBoard.getBoard();
+   Player.playerOne;
+   Player.playerTwo;
 
   const currentPlayer = () => {
      for (let i = 0; i<10 ; i++){
@@ -85,9 +92,12 @@ const gameLogic = (function(){
         let letter = rows[columns];
         if (letter === "X"){
           winner = true;
+          console.log(`${playerOne.name} has won the Game!`)
 
         } else if ( letter === "O"){
           winner = true;
+          console.log(`${playerTwo.name} has won the Game!`)
+
         }
         else {
           winner = false;
@@ -109,7 +119,7 @@ const gameLogic = (function(){
 
    function checkDraw(){
      let draw= false;
-      if (gameBoard.board !== ''){
+      if (gameBoard.board !== ""){
          draw = true;
          console.log("it's a draw")
       } 
@@ -121,38 +131,40 @@ const gameLogic = (function(){
 
    function gameOver(){
 
-    if(gameBoard.board.every( value => value !== '')){
+    if(gameBoard.board.every( value => value !== "")){
       
-      console.log("it's game-over")
-   }
-
-
-
-
-
+      console.log("it's game-over");
+    }
   }
-
-
-   return {gameActive, currentPlayer, checkWin, checkDraw, gameOver};
+  return {gameActive, currentPlayer, checkWin, checkDraw, gameOver};
 })()
 
+
+
+
+
  // DOM Logic
- const tabs = document. querySelectorAll(".cell")
-  const DisplayGame = {
+ let tabs = document.querySelectorAll(".cell");
+    displayGame = {
        
-    displayX : function(){
+      displayX : function(){
+       if (tabs.textContent !== ""){ 
+        tabs.addEventListener("click", ()=>{
+          tabs.textContent = gameLogic.currentPlayer;
+           gameLogic.gameActive;
+           gameLogic.checkWin;
+           gameLogic.checkDraw;
+           gameLogic.gameOver;
+         })
+     } else {
+       tabs.textContent === gameLogic.currentPlayer;
+     }
+     }
+ 
+  
+   };
+   displayGame.displayX
 
-      tabs.addEventListener("click", ()=>{
-        gameLogic.currentPlayer;
-        gameLogic.gameActive;
-        gameLogic.checkWin;
-        gameLogic.checkDraw;
-        gameLogic.gameOver;
-      })
-    }
-
-    
-  }
  // display game array
 
  // add markers to DOM
