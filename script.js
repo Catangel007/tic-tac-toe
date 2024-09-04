@@ -2,40 +2,39 @@
 console.log("tic-tac-toc");
 
 
- const gameBoard = (function (){
+const gameBoard = (function (){
     
-       const gameBoard = {
-           
-         rows: 3,
-        columns: 3,
-        board: [],
+   const game = {
+    
 
-        getBoard (){
-             
-          for (let i = 0; i < rows; i++){
-              board[i] = []; 
-              for(let j = 0; j < columns; j++){
-                 board[i].push(cell())
-              }
-          }
-          function cell (){
-             let value = "";
-            
-             return value;
-          }
-           
-        },
+ getBoard: () => {
 
-        
-       };
+      const rows =3;
+      const columns = 3;
+      let board = [];
+
+   for (let i = 0; i < rows; i++){
+       board[i] = []; 
+       for(let j = 0; j < columns; j++){
+          board[i].push(cell())
+       }
+   }
+   function cell (){
+      let value = "";
      
-    
- })();
+      return value;
+   }
+    return game.getBoard;
+
+ },
+};
+
+return { game };
+
+})()
  
-
-
-
-
+const board = gameBoard.game.getBoard();
+console.log(board());
 
 
 
@@ -48,30 +47,28 @@ function Player (name, marker){
 }
 
 const playerOne = new Player( "howard", "X")
-console.log("playerOne has the X marker");
-
 const playerTwo = new Player("vera", "O")
-console.log("playerTwo has the O marker")
+
 
     return{ playerOne, playerTwo, Player}
 })();
    
+const playerOne = Player.playerOne;
+const playerTwo = Player.playerTwo;
 
+console.log(`${playerOne.name} has the X marker`);
+console.log(`${playerTwo.name} has the X marker`);
 
-
-
-
-
-const gameLogic = (function(playerOne, playerTwo, gameBoard){
+const gameLogic = (function(){
     
  let gameActive = true;
 
-  gameBoard.gameBoard.getBoard();
+  gameBoard.getBoard;
    Player.playerOne;
    Player.playerTwo;
 
   const currentPlayer = () => {
-     for (let i = 0; i<10 ; i++){
+     for (let i = 0; i < 10 ; i++){
     if(playerOne.turn === true){
        playerTwo.turn = false;
        value= playerOne.marker;
@@ -155,7 +152,8 @@ const gameLogic = (function(playerOne, playerTwo, gameBoard){
            gameLogic.checkWin;
            gameLogic.checkDraw;
            gameLogic.gameOver;
-         })
+
+         });
      } else {
        tabs.textContent === gameLogic.currentPlayer;
      }
