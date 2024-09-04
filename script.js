@@ -24,7 +24,7 @@ const gameBoard = (function (){
      
       return value;
    }
-    return game.getBoard;
+    return game.getBoard, board, cell,rows,columns ;
 
  },
 };
@@ -33,13 +33,14 @@ return { game };
 
 })()
  
-const board = gameBoard.game.getBoard();
-console.log(board());
+
+//console.log(board());
 
 
 
 const Player = (function(){
 function Player (name, marker){
+
     this.name = name;
     this.marker= marker;
     this.turn= false;
@@ -48,31 +49,29 @@ function Player (name, marker){
 
 const playerOne = new Player( "howard", "X")
 const playerTwo = new Player("vera", "O")
-
-
-    return{ playerOne, playerTwo, Player}
+  return{ playerOne, playerTwo, Player}
 })();
    
-const playerOne = Player.playerOne;
-const playerTwo = Player.playerTwo;
+const board = gameBoard.game.getBoard();
+ const playerOne = Player.playerOne;
+ const playerTwo = Player.playerTwo;
 
-console.log(`${playerOne.name} has the X marker`);
-console.log(`${playerTwo.name} has the X marker`);
 
 const gameLogic = (function(){
     
- let gameActive = true;
+ let gameActive = false;
 
-  gameBoard.getBoard;
-   Player.playerOne;
-   Player.playerTwo;
-
-  const currentPlayer = () => {
+ console.log(`${playerOne.name} has the X marker`);
+ console.log(`${playerTwo.name} has the X marker`);
+ 
+ function currentPlayer (){
+    console.log (`whose turn is it`);
      for (let i = 0; i < 10 ; i++){
     if(playerOne.turn === true){
+      
        playerTwo.turn = false;
-       value= playerOne.marker;
-       rows[columns]= value;
+       board.cell= playerOne.marker;
+       board.rows[columns]= value;
 
     } else {
       playerOne.turn = false;
@@ -137,6 +136,20 @@ const gameLogic = (function(){
 })()
 
 
+const startBtn = document. querySelector("button");
+ startBtn.addEventListener("click",()=>{
+  console.log("you clicked start btn")
+   
+   const currentPlayer=gameLogic.currentPlayer;
+   const gameOver= gameLogic.gameOver;
+   const checkWin= gameLogic.checkWin;
+   const checkDraw =gameLogic.checkDraw;
+   let active = gameLogic.gameActive;
+   playerOne.turn= true;
+   active = true;
+   
+
+ })
 
 
 
@@ -145,23 +158,28 @@ const gameLogic = (function(){
     displayGame = {
        
       displayX : function(){
-       if (tabs.textContent !== ""){ 
         tabs.addEventListener("click", ()=>{
-          tabs.textContent = gameLogic.currentPlayer;
-           gameLogic.gameActive;
-           gameLogic.checkWin;
-           gameLogic.checkDraw;
-           gameLogic.gameOver;
-
-         });
+       if (tabs.textContent == ""){ 
+         tabs.textContent = gameLogic.currentPlayer;
+         currentPlayer()
+         gameOver()
+         checkWin();
+         checkDraw();
+         
      } else {
        tabs.textContent === gameLogic.currentPlayer;
      }
-     }
+
+    
+     })
  
-  
-   };
-   displayGame.displayX
+   
+   }};
+   
+   displayGame.display = function (){
+     return this.displayX;
+   }
+displayGame.display()
 
  // display game array
 
@@ -170,7 +188,7 @@ const gameLogic = (function(){
  // Prevents picked DOM
 
  // start button
-
+ 
  // modal for prompt player name
  
   
