@@ -11,8 +11,22 @@ const gameBoard = (function (){
 
       const rows =3;
       const columns = 3;
-      let board = [];
+      let board = [['1','2','3'],
+                   ['4','5','6'],
+                   ['7','8','9']];
 
+
+                   
+                   console.log(board[0][0]);
+                   console.log(board[0][1]);
+                   console.log(board[0][2]);
+                   console.log(board[1][0]);
+                   console.log(board[1][1]);
+                   console.log(board[1][2]);
+                   console.log(board[2][0]);
+                   console.log(board[2][1]);
+                   console.log(board[2][2]);
+                   
    for (let i = 0; i < rows; i++){
        board[i] = []; 
        for(let j = 0; j < columns; j++){
