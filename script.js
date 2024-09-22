@@ -27,6 +27,7 @@ const gameBoard = (function (){
                    console.log(board[2][1]);
                    console.log(board[2][2]);
                    
+                   
    for (let i = 0; i < rows; i++){
        board[i] = []; 
        for(let j = 0; j < columns; j++){
@@ -34,9 +35,20 @@ const gameBoard = (function (){
        }
    }
    function cell (){
-      let value = "";
-     
-      return value;
+      let value = '';
+       
+
+      function getValues (value){
+        let token;
+        if( value = ''){
+       token = playerOne.marker;
+        }else{
+          token = playerTwo.marker;
+        }
+        return token;
+      }
+
+      return value = token;
    }
     return game.getBoard, board, cell,rows,columns ;
 
@@ -95,13 +107,13 @@ const gameLogic = (function(){
   }
   }
 
-  function checkWin (){
+   function checkWin (){
       let winner = false;
 
       function isMatchedX (){
         let letter = rows[columns];
         if (letter === "X"){
-          winner = true;
+         
           console.log(`${playerOne.name} has won the Game!`)
 
         } else if ( letter === "O"){
@@ -112,17 +124,25 @@ const gameLogic = (function(){
         else {
           winner = false;
         }
-
-        
       }
-      board[rows[0]].every(isMatchedX);
-      board[rows[1]].every(isMatchedX);
-      board[rows[2]].every(isMatchedX);
-      board[0].every(isMatchedX);
-      board[1].every(isMatchedX);
-      board[2].every(isMatchedX);
-      board[0][2] && board[1][1]&& board[2][0].every(isMatchedX);
-      board[0][0] && board[1][1]&& board[2][2].every(isMatchedX);
+        
+      
+      if (board[0][0]&& board[0][1]&&board[0][2]  === 'X' ||
+          board[1][0]&& board[1][1]&&board[1][2]  === 'X' ||
+          board[2][0]&& board[2][1]&&board[2][2]  === 'X' ||
+          board[0][0]&& board[1][1]&&board[2][2]  === 'X' ||
+          board[2][0]&& board[1][1]&&board[0][2]  === 'X' 
+      ){   console.log('player One is the winner!')
+        winner = true;
+
+      }else if (board[0][0]&& board[0][1]&&board[0][2]  === 'O' ||
+                board[1][0]&& board[1][1]&&board[1][2]  === 'O' ||
+                board[2][0]&& board[2][1]&&board[2][2]  === 'O' ||
+                board[0][0]&& board[1][1]&&board[2][2]  === 'O' ||
+                board[2][0]&& board[1][1]&&board[0][2]  === 'O' ){
+                  console.log('player Two is the winner!')
+                  winner = true;
+                }
       
     return winner;
   }
