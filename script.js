@@ -1,7 +1,7 @@
 
 console.log("tic-tac-toc");
 
-
+//Draw game board
 const gameBoard = (function (){
     
    const game = {
@@ -27,30 +27,8 @@ const gameBoard = (function (){
                    console.log(board[2][1]);
                    console.log(board[2][2]);
                    
-                   
-   for (let i = 0; i < rows; i++){
-       board[i] = []; 
-       for(let j = 0; j < columns; j++){
-          board[i].push(cell())
-       }
-   }
-   function cell (){
-      let value = '';
-       
-
-      function getValues (value){
-        let token;
-        if( value = ''){
-       token = playerOne.marker;
-        }else{
-          token = playerTwo.marker;
-        }
-        return token;
-      }
-
-      return value = token;
-   }
-    return game.getBoard, board, cell,rows,columns ;
+   
+    return game.getBoard, board,rows,columns ;
 
  },
 };
@@ -60,10 +38,9 @@ return { game };
 })()
  
 
-//console.log(board());
 
 
-
+// get Player objects
 const Player = (function(){
 function Player (name, marker){
 
@@ -83,6 +60,10 @@ const board = gameBoard.game.getBoard();
  const playerTwo = Player.playerTwo;
 
 
+
+
+
+// game logic
 const gameLogic = (function(){
     
  let gameActive = false;
@@ -110,29 +91,13 @@ const gameLogic = (function(){
    function checkWin (){
       let winner = false;
 
-      function isMatchedX (){
-        let letter = rows[columns];
-        if (letter === "X"){
-         
-          console.log(`${playerOne.name} has won the Game!`)
-
-        } else if ( letter === "O"){
-          winner = true;
-          console.log(`${playerTwo.name} has won the Game!`)
-
-        }
-        else {
-          winner = false;
-        }
-      }
-        
-      
+  
       if (board[0][0]&& board[0][1]&&board[0][2]  === 'X' ||
           board[1][0]&& board[1][1]&&board[1][2]  === 'X' ||
           board[2][0]&& board[2][1]&&board[2][2]  === 'X' ||
           board[0][0]&& board[1][1]&&board[2][2]  === 'X' ||
           board[2][0]&& board[1][1]&&board[0][2]  === 'X' 
-      ){   console.log('player One is the winner!')
+      ){   console.log(`${playerOne.name} has won the Game!`)
         winner = true;
 
       }else if (board[0][0]&& board[0][1]&&board[0][2]  === 'O' ||
@@ -140,8 +105,11 @@ const gameLogic = (function(){
                 board[2][0]&& board[2][1]&&board[2][2]  === 'O' ||
                 board[0][0]&& board[1][1]&&board[2][2]  === 'O' ||
                 board[2][0]&& board[1][1]&&board[0][2]  === 'O' ){
-                  console.log('player Two is the winner!')
+                  console.log(`${playerTwo.name} has won the Game!`)
                   winner = true;
+                } 
+                else{
+                  winner=false;
                 }
       
     return winner;
@@ -151,7 +119,8 @@ const gameLogic = (function(){
      let draw= false;
       if (gameBoard.board !== ""){
          draw = true;
-         console.log("it's a draw")
+         console.log("it's a draw");
+         console.log("try again")
       } 
 
       return draw;
@@ -169,7 +138,7 @@ const gameLogic = (function(){
   return {gameActive, currentPlayer, checkWin, checkDraw, gameOver};
 })()
 
-
+// Set up start Game
 const startBtn = document. querySelector("button");
  startBtn.addEventListener("click",()=>{
   console.log("you clicked start btn")
