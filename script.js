@@ -24,11 +24,55 @@ const gameBoard = (function (){
    
   };
 
+  console.log("end of IIFE");
 
 return {getBoard:getBoard};
-console.log("end of iife");
 
 })()
 
 const board = gameBoard.getBoard.makeBoard();
 console.log(board);
+
+
+
+class Player {
+ constructor(name, marker){
+    this.name = name;
+    this.marker = marker;
+    this.turn = false;
+    this.score = 0;
+ }
+
+ switchTurn(){
+  let nextPlayer = "X";
+   
+  nextPlayer = nextPlayer === "X" ? "0": "X";
+
+  return nextPlayer
+ }
+
+ makeMove(){
+  for(let m = 1; m <= 9; m--){
+    this.turn = true;
+    let moves = this.marker;
+    board = moves ;
+    console.log(board[0][0]= moves)
+    this.switchTurn
+    
+  }
+
+  
+ }
+}
+
+const playerOne = new Player("Miracle","X");
+const playerTwo = new Player("Purity","O");
+
+function playGame(position){
+ playerOne.makeMove();
+if(console.log("Game Start!")){
+  playerOne.turn = true;
+  console.log (`${playerOne.name} it your turn to play.`);
+}
+
+}playGame();
