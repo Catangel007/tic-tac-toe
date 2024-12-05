@@ -12,10 +12,10 @@ const gameBoard = (function (){
 
          for (let i = 0; i < rows; i++){
              board[i] = [];
-         console.log(i)
+         
                for(let n = 0; n < columns; n++){
                board[i][n] = null;
-                    console.log(board[i][n]);
+                  
                }
       
               }    
@@ -24,7 +24,6 @@ const gameBoard = (function (){
    
   };
 
-  console.log("end of IIFE");
 
 return {getBoard:getBoard};
 
@@ -34,6 +33,8 @@ const board = gameBoard.getBoard.makeBoard();
 console.log(board);
 
 
+const playerContainer = (function(){
+
 
 class Player {
  constructor(name, marker){
@@ -42,16 +43,20 @@ class Player {
     this.turn = false;
     this.score = 0;
  }
+// i thought i would add some methods to this class , I need to a refresher on the syntax laws;
 
- switchTurn(){
-  let nextPlayer = "X";
-   
-  nextPlayer = nextPlayer === "X" ? "0": "X";
-
+switchTurn = () => {
+  let nextPlayer = playerOne.marker;
+   if (playerOne.makeMove){
+  nextPlayer = playerTwo.marker
+} else {
+  nextPlayer = playerOne.marker;
+}
   return nextPlayer
  }
 
- makeMove(){
+
+ makeMove =() => {
   for(let m = 1; m <= 9; m--){
     this.turn = true;
     let moves = this.marker;
@@ -60,10 +65,12 @@ class Player {
     this.switchTurn
     
   }
-
-  
  }
-}
+} 
+
+return {Player,makeMove, switchTurn }
+
+})()
 
 const playerOne = new Player("Miracle","X");
 const playerTwo = new Player("Purity","O");
@@ -75,4 +82,27 @@ if(console.log("Game Start!")){
   console.log (`${playerOne.name} it your turn to play.`);
 }
 
+
 }playGame();
+
+
+
+
+ const gameOver = function (){
+ 
+   const boardArray = board. filter((letter)=>{ 
+    let letters = board.textContent;
+     if (board.forEach( letters ==="X"||letters === "O" && letters !== null)){
+      console.log("GameOver");
+      const gameMessage = `${winner} with ${winner.score} wins this round`;
+     }
+     else {
+      gameMessage =  `it's ${nextPlayer}'s turn to play next`
+     }
+
+   })
+
+
+
+
+ }
